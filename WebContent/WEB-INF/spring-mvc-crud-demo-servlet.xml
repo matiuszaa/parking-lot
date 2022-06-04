@@ -31,7 +31,7 @@
 	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/parking_lot?useSSL=false&amp;serverTimezone=UTC" />
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/parking_lot?allowPublicKeyRetrieval=TRUE&amp;serverTimezone=UTC" />
         <property name="user" value="parkingappuser" />
         <property name="password" value="hbstudent" /> 
 
@@ -45,7 +45,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
-		<property name="packagesToScan" value="com.luv2code.springdemo.entity" />
+		<property name="packagesToScan" value="com.webapp.parkinglot.entity" />
 		<property name="hibernateProperties">
 		   <props>
 		      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
