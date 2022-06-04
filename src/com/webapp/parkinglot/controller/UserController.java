@@ -38,4 +38,25 @@ public class UserController {
 		
 		return "redirect:/user/list";
 	}
+	
+	@GetMapping("/showFormForLogin")
+	public String showFormForLogin(Model theModel) {
+		
+		User theUser = new User();
+		theModel.addAttribute("user-login", theUser);
+		
+		return "user-login";
+	}
+	
+	@PostMapping("/loginUser")
+	public String loginUser(@ModelAttribute("user") User loggingUser) {
+		
+		if (userService.validateUser(loggingUser) == null) {
+			System.out.println("Not found");
+		} else {
+			System.out.println("Found");
+		}
+		
+		return "redirect:/user/list";
+	}
 }

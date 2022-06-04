@@ -20,4 +20,11 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	@Override
+	@Transactional
+	public User validateUser(User loggingUser) {
+		return userDAO.validateUser(loggingUser);
+		
+	}
+
 }
