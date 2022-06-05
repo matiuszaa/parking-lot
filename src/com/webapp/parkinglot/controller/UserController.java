@@ -57,6 +57,6 @@ public class UserController {
 			System.out.println("Found");
 		}
 		
-		return "redirect:/user/list";
+		return "redirect:/parking/menu";
 	}
 }

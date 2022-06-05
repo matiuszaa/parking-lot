@@ -15,7 +15,6 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	
 	@Override
 	public void registerUser(User registeredUser) {
 		
