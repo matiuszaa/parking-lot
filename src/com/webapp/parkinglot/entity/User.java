@@ -1,15 +1,21 @@
 package com.webapp.parkinglot.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="user")
 public class User {
+	
+	@OneToMany(mappedBy="user")
+	private List<Reservation> reservations;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -27,9 +33,26 @@ public class User {
 	
 	@Column(name="password")
 	private String password;
+	
+	@Column(name="city")
+	private String city = "Bialystok";
+	
+	@Column(name="is_disabled")
+	private String isDisability;
+	
+	@Column(name="is_logged")
+	private int isLogged;
 
 	public int getId() {
 		return id;
+	}
+
+	public int getIsLogged() {
+		return isLogged;
+	}
+
+	public void setIsLogged(int isLogged) {
+		this.isLogged = isLogged;
 	}
 
 	public void setId(int id) {
@@ -68,6 +91,30 @@ public class User {
 		this.password = password;
 	}
 	
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
+	public String getIsDisability() {
+		return isDisability;
+	}
+
+	public void setIsDisability(String isDisability) {
+		this.isDisability = isDisability;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";

@@ -1,5 +1,7 @@
 package com.webapp.parkinglot.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.webapp.parkinglot.entity.Parking;
 import com.webapp.parkinglot.entity.User;
 import com.webapp.parkinglot.service.UserService;
 
@@ -26,14 +29,14 @@ public class UserController {
 	@GetMapping("/showFormForRegistry")
 	public String showFormForRegistry(Model theModel) {
 		User theUser = new User();
-		
+		List<String> cities = userService.showAvailableCities();
 		theModel.addAttribute("user", theUser);
+		theModel.addAttribute("cities", cities);
 		return "user-registry";
 	}
 	
 	@PostMapping("/registerUser")
 	public String registerUser(@ModelAttribute("user") User theUser) {
-		
 		userService.registerUser(theUser);
 		
 		return "redirect:/user/list";

@@ -58,10 +58,21 @@
 
 				</tbody>
 			</table>
-		
-		
+			
+			<br><br>
+			
+			Disability:
+			false <form:radiobutton path="isDisability" value="0"/>
+			true <form:radiobutton	path="isDisability" value="1"/>
+			<br><br>
+			
+		 	<form:select path="city">
+      			<form:option value="-" label="--Please Select"/>
+      			<form:options items="${cities}"/>
+			</form:select>
+
 		</form:form>
-	
+		
 		<div style="clear; both;"></div>
 		
 		<p>
